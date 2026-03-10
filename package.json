@@ -1,0 +1,21 @@
+{
+  "name": "registro-proyectos-webapp",
+  "version": "1.0.0",
+  "description": "![Estado del Proyecto](https://img.shields.io/badge/Estado-En_Desarrollo-yellow) ![Versión](https://img.shields.io/badge/Versión-1.0.0-blue)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chosa-gt/registro-proyectos-webapp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/chosa-gt/registro-proyectos-webapp/issues"
+  },
+  "homepage": "https://github.com/chosa-gt/registro-proyectos-webapp#readme"
+}
