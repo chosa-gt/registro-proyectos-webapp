@@ -6,6 +6,8 @@ import usuarioRoutes from './routes/usuario.routes'
 import consultorRoutes from './routes/consultor.routes'
 import clienteRoutes from './routes/cliente.routes'
 import proyectoRoutes from './routes/proyecto.routes'
+import bitacoraRoutes from './routes/bitacora.routes'
+import logMontoRoutes from './routes/logMonto.routes'
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -22,6 +24,8 @@ app.use('/api/usuarios', usuarioRoutes)
 app.use('/api/consultores', consultorRoutes)
 app.use('/api/clientes', clienteRoutes)
 app.use('/api/proyectos', proyectoRoutes)
+app.use('/api/bitacora', bitacoraRoutes)
+app.use('/api/log-montos', logMontoRoutes)
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`)
