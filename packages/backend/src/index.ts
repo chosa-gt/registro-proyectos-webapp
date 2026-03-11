@@ -5,6 +5,7 @@ import catalogoRoutes from './routes/catalogo.routes'
 import usuarioRoutes from './routes/usuario.routes'
 import consultorRoutes from './routes/consultor.routes'
 import clienteRoutes from './routes/cliente.routes'
+import proyectoRoutes from './routes/proyecto.routes'
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -20,6 +21,7 @@ app.use('/api', catalogoRoutes)
 app.use('/api/usuarios', usuarioRoutes)
 app.use('/api/consultores', consultorRoutes)
 app.use('/api/clientes', clienteRoutes)
+app.use('/api/proyectos', proyectoRoutes)
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`)
