@@ -25,7 +25,7 @@ export const getEstadosCliente = async () => {
 export const createEstadoCliente = async (estado: string) => {
   return prisma.estadoCliente.create({ data: { estado } })
 }
-
+    
 export const updateEstadoCliente = async (id_estado_cliente: number, estado: string) => {
   return prisma.estadoCliente.update({ where: { id_estado_cliente }, data: { estado } })
 }
