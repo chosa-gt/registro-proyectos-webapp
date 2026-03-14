@@ -34,6 +34,9 @@ export const getProyectoByNoProyecto = async (req: Request, res: Response) => {
 
 export const createProyecto = async (req: Request, res: Response) => {
   try {
+
+    console.log('Body recibido:', req.body)
+    
     const {
       no_proyecto,
       nombre,
@@ -56,8 +59,13 @@ export const createProyecto = async (req: Request, res: Response) => {
       id_estado_proyecto
     })
     res.status(201).json(data)
-  } catch (error) {
-    res.status(500).json({ error: 'Error al crear proyecto' })
+  } catch (error: any) {
+    if (error?.code === 'P2002') {
+      res.status(400).json({ error: `El número de proyecto '${req.body.no_proyecto}' ya existe. Use un número diferente.` })
+    } else {
+      console.error('Error createProyecto:', error)
+      res.status(500).json({ error: 'Error al crear proyecto' })
+    }
   }
 }
 

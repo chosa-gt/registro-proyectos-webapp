@@ -12,8 +12,8 @@
           <button @click="router.push('/proyectos')" class="text-sm text-gray-500 hover:text-blue-600 mb-2 flex items-center gap-1">
             ← Volver a Proyectos
           </button>
-          <h2 class="text-2xl font-bold text-gray-800">{{ proyecto.nombre || 'Sin nombre' }}</h2>
-          <p class="text-sm text-gray-500 mt-1">No. Proyecto: <span class="font-mono font-medium text-blue-600">{{ proyecto.no_proyecto }}</span></p>
+          <h2 class="text-2xl font-bold text-gray-800">{{ proyecto?.nombre || 'Sin nombre' }}</h2>
+          <p class="text-sm text-gray-500 mt-1">No. Proyecto: <span class="font-mono font-medium text-blue-600">{{ proyecto?.no_proyecto }}</span></p>
         </div>
         <div class="flex gap-2">
           <button @click="abrirModalEditar" class="btn-secondary">Editar</button>

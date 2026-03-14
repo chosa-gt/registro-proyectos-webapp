@@ -275,7 +275,7 @@ const abrirModal = async (proyecto?: Proyecto) => {
     form.no_proyecto = proyecto.no_proyecto;
     form.nombre = proyecto.nombre || "";
     form.descripcion = proyecto.descripcion || "";
-    form.fecha_inicio = proyecto.fecha_inicio.split("T")[0];
+    form.fecha_inicio = proyecto.fecha_inicio?.split("T")[0] ?? "";
     form.fecha_fin = proyecto.fecha_fin?.split("T")[0] || "";
     form.id_cliente = proyecto.cliente.id_cliente;
     form.id_consultor = proyecto.consultor.id_consultor;
@@ -341,8 +341,12 @@ const guardar = async () => {
     }
     cerrarModal();
     await store.fetchProyectos();
-  } catch (e) {
-    alert("Error al guardar proyecto");
+  } catch (error: any) {
+    if (error?.response?.data?.error) {
+      alert(`Error: ${error.response.data.error}`)
+    } else {
+      alert('Error al guardar proyecto')
+    }
   }
 };
 
