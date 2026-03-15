@@ -26,7 +26,7 @@
         <div class="bg-gray-50 rounded-lg p-4">
           <p class="text-xs text-gray-500 mb-1">Estado actual</p>
           <span :class="badgeEstado(proyecto.estado_proyecto.estado)">
-            {{ proyecto.estado_proyecto.estado }}
+            {{ proyecto?.estado_proyecto?.estado }}
           </span>
         </div>
         <div class="bg-gray-50 rounded-lg p-4">
@@ -51,16 +51,28 @@
         <!-- Cliente -->
         <div class="card">
           <p class="text-xs font-medium text-gray-500 mb-3">Cliente</p>
-          <p class="text-base font-semibold text-gray-800">{{ proyecto.cliente.nombre }} {{ proyecto.cliente.apellido }}</p>
-          <p class="text-sm text-gray-500">{{ proyecto.cliente.empresa.nombre }}</p>
+          <p class="text-base font-semibold text-gray-800">{{ proyecto?.cliente?.nombre }} {{ proyecto?.cliente?.apellido }}</p>
+
+        <!-- Empresa -->
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-sm text-gray-500">{{ proyecto?.cliente?.empresa?.nombre }}</span>
+            <span style="background: #dbeafe; color: #1e40af; padding: 1px 7px; border-radius: 99px; font-size: 11px;">Empresa</span>
+          </div>
+
+          
+
           <div class="border-t border-gray-100 mt-3 pt-3 grid grid-cols-2 gap-2 text-xs">
             <div>
               <span class="text-gray-400">Teléfono</span>
-              <p class="text-gray-700">{{ proyecto.cliente.telefono || '—' }}</p>
+              <p class="text-gray-700">{{ proyecto?.cliente?.telefono || '—' }}</p>
             </div>
             <div>
               <span class="text-gray-400">Correo</span>
-              <p class="text-gray-700">{{ proyecto.cliente.correo || '—' }}</p>
+              <p class="text-gray-700">{{ proyecto?.cliente?.correo || '—' }}</p>
+            </div>
+            <div>
+              <span class="text-gray-400">Dirección</span>
+              <p class="text-gray-700">{{ proyecto?.cliente?.empresa?.direccion || '—' }}</p>
             </div>
           </div>
         </div>
@@ -70,11 +82,11 @@
           <p class="text-xs font-medium text-gray-500 mb-3">Consultor asignado</p>
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-semibold text-sm">
-              {{ iniciales(proyecto.consultor.nombre) }}
+              {{ proyecto?.consultor?.nombre ? iniciales(proyecto.consultor.nombre) : '' }}
             </div>
             <div>
-              <p class="text-base font-semibold text-gray-800">{{ proyecto.consultor.nombre }}</p>
-              <p class="text-xs text-gray-500">{{ proyecto.consultor.telefono || '—' }}</p>
+              <p class="text-base font-semibold text-gray-800">{{ proyecto?.consultor?.nombre }}</p>
+              <p class="text-xs text-gray-500">{{ proyecto?.consultor?.telefono || '—' }}</p>
             </div>
           </div>
         </div>
@@ -229,6 +241,7 @@ import { useProyectoStore } from '../stores/proyecto.store'
 import { useCatalogoStore } from '../stores/catalogo.store'
 import { BitacoraService } from '../services/bitacora.service'
 import { LogMontoService } from '../services/logMonto.service'
+import { ProyectoService } from '../services/proyecto.service'
 import ModalForm from '../components/ui/ModalForm.vue'
 import type { Bitacora, LogMonto, EstadoProyecto, Prioridad } from '../types'
 
@@ -320,6 +333,11 @@ const guardarSeguimiento = async () => {
       id_usuario: 1, // temporal hasta tener auth
       id_prioridad: Number(formSeguimiento.value.id_prioridad),
     })
+    
+    await ProyectoService.updateProyecto(proyecto.value!.id_proyecto, {
+      id_estado_proyecto: Number(formSeguimiento.value.id_estado_proyecto)
+    })
+
     modalSeguimiento.value = false
     await cargarBitacora(proyecto.value!.id_proyecto)
     await store.fetchProyectoById(proyecto.value!.id_proyecto)

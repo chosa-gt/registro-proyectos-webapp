@@ -8,7 +8,12 @@ const prisma = new PrismaClient({ adapter })
 export const getProyectos = async () => {
   return prisma.proyecto.findMany({
     include: {
-      cliente: true,
+      cliente: {
+        include: {
+          empresa: true,        // ← agrega esto
+          estado_cliente: true
+        }
+      },
       consultor: true,
       estado_proyecto: true,
       log_montos: {
@@ -23,7 +28,12 @@ export const getProyectoById = async (id_proyecto: number) => {
   return prisma.proyecto.findUnique({
     where: { id_proyecto },
     include: {
-      cliente: true,
+      cliente: {
+        include: {
+          empresa: true,        // ← asegúrate que esté esto
+          estado_cliente: true
+        }
+      },
       consultor: true,
       estado_proyecto: true,
       bitacoras: {
