@@ -33,6 +33,7 @@ const navItems = [
   { path: "/proyectos", icon: "📁", label: "Proyectos" },
   { path: "/clientes", icon: "👥", label: "Clientes" },
   { path: "/consultores", icon: "👤", label: "Consultores" },
+  { path: '/busqueda',  icon: '🔍', label: 'Búsqueda y Reportes'},
   { path: "/catalogos", icon: "🗂️", label: "Catálogos" },
 ];
 </script>
