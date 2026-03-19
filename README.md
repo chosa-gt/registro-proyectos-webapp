@@ -102,7 +102,7 @@ registro-proyectos-webapp/
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tuusuario/registro-proyectos-webapp.git
+git clone https://github.com/chosa-gt/registro-proyectos-webapp.git
 cd registro-proyectos-webapp
 ```
 
@@ -223,7 +223,7 @@ El sistema cuenta con las siguientes tablas principales:
 
 ## 👤 Autor
 
-**Luis Daniel Casasola Chiquin**
+**Daniel Casasola**
 
 ---
 
