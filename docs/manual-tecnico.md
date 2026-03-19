@@ -8,8 +8,7 @@
 
 **Versión:** 1.0  
 **Fecha:** Marzo 2026  
-**Elaborado por:** Luis Daniel Casasola Chiquin  
-**Revisado por:** Ing. Luis Jacobo Rodas
+**Elaborado por:** Daniel Casasola
 
 ---
 
